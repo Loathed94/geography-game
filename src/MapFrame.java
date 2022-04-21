@@ -25,6 +25,8 @@ public class MapFrame extends JFrame {
     private int correctGuesses = 0;
     private int totalGuesses = 0;
     private final JLabel guessesLabel = new JLabel("Correct guesses: "+correctGuesses+" out of "+totalGuesses+" attempts.");
+    private final int buttonWidth = 120;
+    private final int buttonHeight = 40;
 
     public MapFrame(){
         setSize(750, 650);
@@ -58,7 +60,7 @@ public class MapFrame extends JFrame {
     }
 
     private void generateResetButton(){
-        resetButton.setBounds(20, 200, 80, 40);
+        resetButton.setBounds(15, 235, 80, 40);
         resetButton.addMouseListener(new clickReset());
         layeredPane.add(resetButton, 4, 0);
     }
@@ -66,22 +68,28 @@ public class MapFrame extends JFrame {
     private void generateContinentButtons(){
         JButton africa = new JButton("Play Africa");
         africa.setName("Africa");
-        africa.setBounds(20, 100, 110, 40);
+        africa.setBounds(15, 145, buttonWidth, buttonHeight);
         africa.addMouseListener(new switchContinent());
         layeredPane.add(africa, 5, 0);
 
         JButton europe = new JButton("Play Europe");
         europe.setName("Europe");
-        europe.setBounds(0, 0, 110, 40);
+        europe.setBounds(0, 0, buttonWidth, buttonHeight);
         europe.addMouseListener(new switchContinent());
         europe.setVisible(false);
         layeredPane.add(europe, 5, 1);
 
         JButton asia = new JButton("Play Asia");
         asia.setName("Asia");
-        asia.setBounds(20, 150, 110, 40);
+        asia.setBounds(15, 190, buttonWidth, buttonHeight);
         asia.addMouseListener(new switchContinent());
         layeredPane.add(asia, 5, 2);
+
+        JButton states = new JButton("Play US States");
+        states.setName("States");
+        states.setBounds(15, 100, buttonWidth, buttonHeight);
+        states.addMouseListener(new switchContinent());
+        layeredPane.add(states, 5, 3);
     }
 
     private void seedEuropeanButtons(){
@@ -639,6 +647,207 @@ public class MapFrame extends JFrame {
         shuffleQueue();
     }
 
+    private void seedStatesButtons(){
+        countryQueue = new LinkedList<>();
+        CountryButton washington = new CountryButton("Washington", 135, 90, 50, 50);
+        washington.addMouseListener(new clickCountry());
+        layeredPane.add(washington, 1, 0);
+        countryQueue.add(washington.getName());
+        CountryButton oregon = new CountryButton("Oregon", 90, 160, 65, 65);
+        oregon.addMouseListener(new clickCountry());
+        layeredPane.add(oregon, 1, 1);
+        countryQueue.add(oregon.getName());
+        CountryButton california = new CountryButton("California", 70, 330, 50, 50);
+        california.addMouseListener(new clickCountry());
+        layeredPane.add(california, 1, 2);
+        countryQueue.add(california.getName());
+        CountryButton nevada = new CountryButton("Nevada", 140, 280, 60, 60);
+        nevada.addMouseListener(new clickCountry());
+        layeredPane.add(nevada, 1, 3);
+        countryQueue.add(nevada.getName());
+        CountryButton idaho = new CountryButton("Idaho", 195, 200, 50, 50);
+        idaho.addMouseListener(new clickCountry());
+        layeredPane.add(idaho, 1, 4);
+        countryQueue.add(idaho.getName());
+        CountryButton montana = new CountryButton("Montana", 260, 130, 130, 60);
+        montana.addMouseListener(new clickCountry());
+        layeredPane.add(montana, 1, 5);
+        countryQueue.add(montana.getName());
+        CountryButton wyoming = new CountryButton("Wyoming", 300, 220, 90, 70);
+        wyoming.addMouseListener(new clickCountry());
+        layeredPane.add(wyoming, 1, 6);
+        countryQueue.add(wyoming.getName());
+        CountryButton utah = new CountryButton("Utah", 240, 310, 60, 70);
+        utah.addMouseListener(new clickCountry());
+        layeredPane.add(utah, 1, 7);
+        countryQueue.add(utah.getName());
+        CountryButton arizona = new CountryButton("Arizona", 220, 400, 60, 100);
+        arizona.addMouseListener(new clickCountry());
+        layeredPane.add(arizona, 1, 8);
+        countryQueue.add(arizona.getName());
+        CountryButton newMexico = new CountryButton("New Mexico", 320, 410, 80, 100);
+        newMexico.addMouseListener(new clickCountry());
+        layeredPane.add(newMexico, 1, 9);
+        countryQueue.add(newMexico.getName());
+        CountryButton texas = new CountryButton("Texas", 430, 487, 110, 90);
+        texas.addMouseListener(new clickCountry());
+        layeredPane.add(texas, 1, 10);
+        countryQueue.add(texas.getName());
+        CountryButton oklahoma = new CountryButton("Oklahoma", 490, 415, 80, 50);
+        oklahoma.addMouseListener(new clickCountry());
+        layeredPane.add(oklahoma, 1, 11);
+        countryQueue.add(oklahoma.getName());
+        CountryButton kansas = new CountryButton("Kansas", 450, 340, 100, 60);
+        kansas.addMouseListener(new clickCountry());
+        layeredPane.add(kansas, 1, 12);
+        countryQueue.add(kansas.getName());
+        CountryButton colorado = new CountryButton("Colorado", 330, 320, 90, 70);
+        colorado.addMouseListener(new clickCountry());
+        layeredPane.add(colorado, 1, 13);
+        countryQueue.add(colorado.getName());
+        CountryButton nebraska = new CountryButton("Nebraska", 450, 275, 80, 50);
+        nebraska.addMouseListener(new clickCountry());
+        layeredPane.add(nebraska, 1, 14);
+        countryQueue.add(nebraska.getName());
+        CountryButton southDakota = new CountryButton("South Dakota", 420, 200, 100, 60);
+        southDakota.addMouseListener(new clickCountry());
+        layeredPane.add(southDakota, 1, 15);
+        countryQueue.add(southDakota.getName());
+        CountryButton northDakota = new CountryButton("North Dakota", 420, 130, 100, 60);
+        northDakota.addMouseListener(new clickCountry());
+        layeredPane.add(northDakota, 1, 16);
+        countryQueue.add(northDakota.getName());
+        CountryButton minnesota = new CountryButton("Minnesota", 543, 133, 50, 100);
+        minnesota.addMouseListener(new clickCountry());
+        layeredPane.add(minnesota, 1, 17);
+        countryQueue.add(minnesota.getName());
+        CountryButton wisconsin = new CountryButton("Wisconsin", 635, 190, 40, 50);
+        wisconsin.addMouseListener(new clickCountry());
+        layeredPane.add(wisconsin, 1, 18);
+        countryQueue.add(wisconsin.getName());
+        CountryButton iowa = new CountryButton("Iowa", 560, 260, 70, 50);
+        iowa.addMouseListener(new clickCountry());
+        layeredPane.add(iowa, 1, 19);
+        countryQueue.add(iowa.getName());
+        CountryButton missouri = new CountryButton("Missouri", 590, 325, 40, 80);
+        missouri.addMouseListener(new clickCountry());
+        layeredPane.add(missouri, 1, 20);
+        countryQueue.add(missouri.getName());
+        CountryButton arkansas = new CountryButton("Arkansas", 595, 420, 50, 60);
+        arkansas.addMouseListener(new clickCountry());
+        layeredPane.add(arkansas, 1, 21);
+        countryQueue.add(arkansas.getName());
+        CountryButton louisiana = new CountryButton("Louisiana", 610, 500, 40, 70);
+        louisiana.addMouseListener(new clickCountry());
+        layeredPane.add(louisiana, 1, 22);
+        countryQueue.add(louisiana.getName());
+        CountryButton mississippi = new CountryButton("Mississippi", 666, 457, 40, 70);
+        mississippi.addMouseListener(new clickCountry());
+        layeredPane.add(mississippi, 1, 23);
+        countryQueue.add(mississippi.getName());
+        CountryButton alabama = new CountryButton("Alabama", 715, 440, 45, 80);
+        alabama.addMouseListener(new clickCountry());
+        layeredPane.add(alabama, 1, 24);
+        countryQueue.add(alabama.getName());
+        CountryButton florida = new CountryButton("Florida", 840, 540, 45, 60);
+        florida.addMouseListener(new clickCountry());
+        layeredPane.add(florida, 1, 25);
+        countryQueue.add(florida.getName());
+        CountryButton georgia = new CountryButton("Georgia", 785, 450, 45, 60);
+        georgia.addMouseListener(new clickCountry());
+        layeredPane.add(georgia, 1, 26);
+        countryQueue.add(georgia.getName());
+        CountryButton southCarolina = new CountryButton("South Carolina", 830, 415, 40, 30);
+        southCarolina.addMouseListener(new clickCountry());
+        layeredPane.add(southCarolina, 1, 27);
+        countryQueue.add(southCarolina.getName());
+        CountryButton northCarolina = new CountryButton("North Carolina", 840, 372, 60, 30);
+        northCarolina.addMouseListener(new clickCountry());
+        layeredPane.add(northCarolina, 1, 28);
+        countryQueue.add(northCarolina.getName());
+        CountryButton tennessee = new CountryButton("Tennessee", 690, 403, 80, 25);
+        tennessee.addMouseListener(new clickCountry());
+        layeredPane.add(tennessee, 1, 29);
+        countryQueue.add(tennessee.getName());
+        CountryButton kentucky = new CountryButton("Kentucky", 750, 340, 40, 40);
+        kentucky.addMouseListener(new clickCountry());
+        layeredPane.add(kentucky, 1, 30);
+        countryQueue.add(kentucky.getName());
+        CountryButton illinois = new CountryButton("Illinois", 655, 275, 40, 70);
+        illinois.addMouseListener(new clickCountry());
+        layeredPane.add(illinois, 1, 31);
+        countryQueue.add(illinois.getName());
+        CountryButton indiana = new CountryButton("Indiana", 712, 275, 30, 70);
+        indiana.addMouseListener(new clickCountry());
+        layeredPane.add(indiana, 1, 32);
+        countryQueue.add(indiana.getName());
+        CountryButton michigan = new CountryButton("Michigan", 710, 170, 50, 80);
+        michigan.addMouseListener(new clickCountry());
+        layeredPane.add(michigan, 1, 33);
+        countryQueue.add(michigan.getName());
+        CountryButton ohio = new CountryButton("Ohio", 760, 270, 45, 45);
+        ohio.addMouseListener(new clickCountry());
+        layeredPane.add(ohio, 1, 34);
+        countryQueue.add(ohio.getName());
+        CountryButton westVirginia = new CountryButton("West Virginia", 820, 300, 30, 30);
+        westVirginia.addMouseListener(new clickCountry());
+        layeredPane.add(westVirginia, 1, 35);
+        countryQueue.add(westVirginia.getName());
+        CountryButton virginia = new CountryButton("Virginia", 860, 317, 35, 35);
+        virginia.addMouseListener(new clickCountry());
+        layeredPane.add(virginia, 1, 36);
+        countryQueue.add(virginia.getName());
+        CountryButton maryland = new CountryButton("Maryland", 888, 278, 15, 15);
+        maryland.addMouseListener(new clickCountry());
+        layeredPane.add(maryland, 1, 37);
+        countryQueue.add(maryland.getName());
+        CountryButton pennsylvania = new CountryButton("Pennsylvania", 850, 235, 40, 40);
+        pennsylvania.addMouseListener(new clickCountry());
+        layeredPane.add(pennsylvania, 1, 38);
+        countryQueue.add(pennsylvania.getName());
+        CountryButton delaware = new CountryButton("Delaware", 920, 280, 13, 13);
+        delaware.addMouseListener(new clickCountry());
+        layeredPane.add(delaware, 1, 39);
+        countryQueue.add(delaware.getName());
+        CountryButton newJersey = new CountryButton("New Jersey", 925, 230, 13, 40);
+        newJersey.addMouseListener(new clickCountry());
+        layeredPane.add(newJersey, 1, 40);
+        countryQueue.add(newJersey.getName());
+        CountryButton newYork = new CountryButton("New York", 890, 150, 30, 60);
+        newYork.addMouseListener(new clickCountry());
+        layeredPane.add(newYork, 1, 41);
+        countryQueue.add(newYork.getName());
+        CountryButton connecticut = new CountryButton("Connecticut", 940, 200, 25, 15);
+        connecticut.addMouseListener(new clickCountry());
+        layeredPane.add(connecticut, 1, 42);
+        countryQueue.add(connecticut.getName());
+        CountryButton rhodeIsland = new CountryButton("Rhode Island", 967, 192, 10, 10);
+        rhodeIsland.addMouseListener(new clickCountry());
+        layeredPane.add(rhodeIsland, 1, 43);
+        countryQueue.add(rhodeIsland.getName());
+        CountryButton massachusetts = new CountryButton("Massachusetts", 940, 182, 20, 10);
+        massachusetts.addMouseListener(new clickCountry());
+        layeredPane.add(massachusetts, 1, 44);
+        countryQueue.add(massachusetts.getName());
+        CountryButton vermont = new CountryButton("Vermont", 928, 130, 10, 30);
+        vermont.addMouseListener(new clickCountry());
+        layeredPane.add(vermont, 1, 45);
+        countryQueue.add(vermont.getName());
+        CountryButton newHampshire = new CountryButton("New Hampshire", 948, 140, 10, 30);
+        newHampshire.addMouseListener(new clickCountry());
+        layeredPane.add(newHampshire, 1, 46);
+        countryQueue.add(newHampshire.getName());
+        CountryButton maine = new CountryButton("Maine", 957, 62, 30, 60);
+        maine.addMouseListener(new clickCountry());
+        layeredPane.add(maine, 1, 47);
+        countryQueue.add(maine.getName());
+        CountryButton alaska = new CountryButton("Alaska", 88, 513, 60, 80);
+        alaska.addMouseListener(new clickCountry());
+        layeredPane.add(alaska, 1, 48);
+        countryQueue.add(alaska.getName());
+        shuffleQueue();
+    }
+
     private void switchToEurope(){
         switchMap("Europe");
         clearOldCountries();
@@ -649,9 +858,11 @@ public class MapFrame extends JFrame {
             }else{
                 continent.setVisible(true);
                 if(continent.getName().equals("Africa")){
-                    continent.setBounds(20, 100, 110, 40);
+                    continent.setBounds(15, 145, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(20, 150, 110, 40);
+                    continent.setBounds(15, 190, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("States")){
+                    continent.setBounds(15, 100, buttonWidth, buttonHeight);
                 }
             }
         }
@@ -669,9 +880,11 @@ public class MapFrame extends JFrame {
             }else{
                 continent.setVisible(true);
                 if(continent.getName().equals("Europe")){
-                    continent.setBounds(20, 350, 110, 40);
+                    continent.setBounds(20, 420, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(20, 400, 110, 40);
+                    continent.setBounds(20, 470, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("States")){
+                    continent.setBounds(20, 370, buttonWidth, buttonHeight);
                 }
             }
         }
@@ -689,9 +902,11 @@ public class MapFrame extends JFrame {
             }else{
                 continent.setVisible(true);
                 if(continent.getName().equals("Europe")){
-                    continent.setBounds(170, 550, 110, 40);
+                    continent.setBounds(170, 535, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("Africa")){
-                    continent.setBounds(170, 600, 110, 40);
+                    continent.setBounds(170, 580, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("States")){
+                    continent.setBounds(170, 625, buttonWidth, buttonHeight);
                 }
             }
         }
@@ -699,22 +914,49 @@ public class MapFrame extends JFrame {
         seedAsianButtons();
     }
 
+    private void switchToStates(){
+        switchMap("States");
+        clearOldCountries();
+        Component[] continents = layeredPane.getComponentsInLayer(5);
+        for(Component continent : continents){
+            if(continent.getName().equals("States")){
+                continent.setVisible(false);
+            }else{
+                continent.setVisible(true);
+                if(continent.getName().equals("Europe")){
+                    continent.setBounds(400, 10, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Africa")){
+                    continent.setBounds(525, 10, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Asia")){
+                    continent.setBounds(400, 55, buttonWidth, buttonHeight);
+                }
+            }
+        }
+        moveResetAndLabels("States");
+        seedStatesButtons();
+    }
+
     private void moveResetAndLabels(String continentName){
         switch (continentName) {
             case "Africa" -> {
-                resetButton.setBounds(20, 450, 80, 40);
-                guessesLabel.setBounds(20, 480, 300, 50);
-                currentCountryLabel.setBounds(20, 510, 300, 50);
+                resetButton.setBounds(20, 520, 80, 40);
+                guessesLabel.setBounds(20, 550, 300, 50);
+                currentCountryLabel.setBounds(20, 580, 300, 50);
             }
             case "Europe" -> {
-                resetButton.setBounds(20, 150, 80, 40);
+                resetButton.setBounds(15, 235, 80, 40);
                 currentCountryLabel.setBounds(180, 30, 300, 50);
                 guessesLabel.setBounds(180, 1, 300, 50);
             }
             case "Asia" -> {
-                resetButton.setBounds(170, 500, 80, 40);
+                resetButton.setBounds(190, 490, 80, 40);
                 currentCountryLabel.setBounds(160, 150, 300, 50);
                 guessesLabel.setBounds(160, 120, 300, 50);
+            }
+            case "States" -> {
+                resetButton.setBounds(525, 55, 80, 40);
+                currentCountryLabel.setBounds(140, 30, 300, 50);
+                guessesLabel.setBounds(140, 1, 300, 50);
             }
         }
     }
@@ -757,6 +999,15 @@ public class MapFrame extends JFrame {
                 height = 750;
                 try {
                     mapImage = ImageIO.read(new File(".\\resources\\asia.png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            case "States" -> {
+                width = 1040;
+                height = 715;
+                try {
+                    mapImage = ImageIO.read(new File(".\\resources\\america.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -850,6 +1101,7 @@ public class MapFrame extends JFrame {
                 case "Africa" -> switchToAfrica();
                 case "Europe" -> switchToEurope();
                 case "Asia" -> switchToAsia();
+                case "States" -> switchToStates();
             }
         }
 
