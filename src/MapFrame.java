@@ -12,7 +12,7 @@ public class MapFrame extends JFrame {
     private static BufferedImage mapImage;
     static {
         try {
-            mapImage = ImageIO.read(new File("C:\\Users\\CNeij1\\Pictures\\mapGame\\europe5.png"));
+            mapImage = ImageIO.read(new File(".\\resources\\europe5.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -738,7 +738,7 @@ public class MapFrame extends JFrame {
                 width = 640;
                 height = 700;
                 try {
-                    mapImage = ImageIO.read(new File("C:\\Users\\CNeij1\\Pictures\\mapGame\\africa4.png"));
+                    mapImage = ImageIO.read(new File(".\\resources\\africa4.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -747,7 +747,7 @@ public class MapFrame extends JFrame {
                 width = 750;
                 height = 650;
                 try {
-                    mapImage = ImageIO.read(new File("C:\\Users\\CNeij1\\Pictures\\mapGame\\europe5.png"));
+                    mapImage = ImageIO.read(new File(".\\resources\\europe5.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -756,7 +756,7 @@ public class MapFrame extends JFrame {
                 width = 850;
                 height = 750;
                 try {
-                    mapImage = ImageIO.read(new File("C:\\Users\\CNeij1\\Pictures\\mapGame\\asia.png"));
+                    mapImage = ImageIO.read(new File(".\\resources\\asia.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
