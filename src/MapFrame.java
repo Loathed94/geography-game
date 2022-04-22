@@ -60,7 +60,7 @@ public class MapFrame extends JFrame {
     }
 
     private void generateResetButton(){
-        resetButton.setBounds(15, 235, 80, 40);
+        resetButton.setBounds(630, 10, 80, 40);
         resetButton.addMouseListener(new clickReset());
         layeredPane.add(resetButton, 4, 0);
     }
@@ -68,7 +68,7 @@ public class MapFrame extends JFrame {
     private void generateContinentButtons(){
         JButton africa = new JButton("Play Africa");
         africa.setName("Africa");
-        africa.setBounds(15, 145, buttonWidth, buttonHeight);
+        africa.setBounds(60, 560, buttonWidth, buttonHeight);
         africa.addMouseListener(new switchContinent());
         layeredPane.add(africa, 5, 0);
 
@@ -81,15 +81,21 @@ public class MapFrame extends JFrame {
 
         JButton asia = new JButton("Play Asia");
         asia.setName("Asia");
-        asia.setBounds(15, 190, buttonWidth, buttonHeight);
+        asia.setBounds(590, 560, buttonWidth, buttonHeight);
         asia.addMouseListener(new switchContinent());
         layeredPane.add(asia, 5, 2);
 
         JButton states = new JButton("Play US States");
         states.setName("States");
-        states.setBounds(15, 100, buttonWidth, buttonHeight);
+        states.setBounds(15, 170, buttonWidth, buttonHeight);
         states.addMouseListener(new switchContinent());
         layeredPane.add(states, 5, 3);
+
+        JButton sweden = new JButton("Play Sweden");
+        sweden.setName("Sweden");
+        sweden.setBounds(300, 100, buttonWidth, buttonHeight);
+        sweden.addMouseListener(new switchContinent());
+        layeredPane.add(sweden, 5, 4);
     }
 
     private void seedEuropeanButtons(){
@@ -848,6 +854,111 @@ public class MapFrame extends JFrame {
         shuffleQueue();
     }
 
+    private void seedSwedenButtons(){
+        countryQueue = new LinkedList<>();
+        CountryButton lappland = new CountryButton("Lappland", 215, 65, 75, 90);
+        lappland.addMouseListener(new clickCountry());
+        layeredPane.add(lappland, 1, 0);
+        countryQueue.add(lappland.getName());
+        CountryButton norrbotten = new CountryButton("Norrbotten", 340, 72, 20, 80);
+        norrbotten.addMouseListener(new clickCountry());
+        layeredPane.add(norrbotten, 1, 1);
+        countryQueue.add(norrbotten.getName());
+        CountryButton västerbotten = new CountryButton("Västerbotten", 280, 195, 30, 50);
+        västerbotten.addMouseListener(new clickCountry());
+        layeredPane.add(västerbotten, 1, 2);
+        countryQueue.add(västerbotten.getName());
+        CountryButton ångermanland = new CountryButton("Ångermanland", 208, 255, 45, 30);
+        ångermanland.addMouseListener(new clickCountry());
+        layeredPane.add(ångermanland, 1, 3);
+        countryQueue.add(ångermanland.getName());
+        CountryButton jämtland = new CountryButton("Jämtland", 120, 250, 65, 40);
+        jämtland.addMouseListener(new clickCountry());
+        layeredPane.add(jämtland, 1, 4);
+        countryQueue.add(jämtland.getName());
+        CountryButton medelpad = new CountryButton("Medelpad", 190, 305, 35, 20);
+        medelpad.addMouseListener(new clickCountry());
+        layeredPane.add(medelpad, 1, 5);
+        countryQueue.add(medelpad.getName());
+        CountryButton härjedalen = new CountryButton("Härjedalen", 110, 305, 30, 20);
+        härjedalen.addMouseListener(new clickCountry());
+        layeredPane.add(härjedalen, 1, 6);
+        countryQueue.add(härjedalen.getName());
+        CountryButton hälsingland = new CountryButton("Hälsingland", 175, 333, 40, 30);
+        hälsingland.addMouseListener(new clickCountry());
+        layeredPane.add(hälsingland, 1, 7);
+        countryQueue.add(hälsingland.getName());
+        CountryButton dalarna = new CountryButton("Dalarna", 120, 360, 50, 35);
+        dalarna.addMouseListener(new clickCountry());
+        layeredPane.add(dalarna, 1, 8);
+        countryQueue.add(dalarna.getName());
+        CountryButton gästrikland = new CountryButton("Gästrikland", 202, 390, 20, 20);
+        gästrikland.addMouseListener(new clickCountry());
+        layeredPane.add(gästrikland, 1, 9);
+        countryQueue.add(gästrikland.getName());
+        CountryButton uppland = new CountryButton("Uppland", 220, 420, 35, 35);
+        uppland.addMouseListener(new clickCountry());
+        layeredPane.add(uppland, 1, 10);
+        countryQueue.add(uppland.getName());
+        CountryButton västmanland = new CountryButton("Västmanland", 157, 438, 50, 15);
+        västmanland.addMouseListener(new clickCountry());
+        layeredPane.add(västmanland, 1, 11);
+        countryQueue.add(västmanland.getName());
+        CountryButton värmland = new CountryButton("Värmland", 105, 428, 40, 30);
+        värmland.addMouseListener(new clickCountry());
+        layeredPane.add(värmland, 1, 12);
+        countryQueue.add(värmland.getName());
+        CountryButton dalsland = new CountryButton("Dalsland", 90, 475, 15, 15);
+        dalsland.addMouseListener(new clickCountry());
+        layeredPane.add(dalsland, 1, 13);
+        countryQueue.add(dalsland.getName());
+        CountryButton bohuslän = new CountryButton("Bohuslän", 70, 490, 15, 35);
+        bohuslän.addMouseListener(new clickCountry());
+        layeredPane.add(bohuslän, 1, 14);
+        countryQueue.add(bohuslän.getName());
+        CountryButton västergötland = new CountryButton("Västergötland", 100, 510, 30, 35);
+        västergötland.addMouseListener(new clickCountry());
+        layeredPane.add(västergötland, 1, 15);
+        countryQueue.add(västergötland.getName());
+        CountryButton halland = new CountryButton("Halland", 100, 563, 15, 30);
+        halland.addMouseListener(new clickCountry());
+        layeredPane.add(halland, 1, 16);
+        countryQueue.add(halland.getName());
+        CountryButton skåne = new CountryButton("Skåne", 112, 603, 30, 40);
+        skåne.addMouseListener(new clickCountry());
+        layeredPane.add(skåne, 1, 17);
+        countryQueue.add(skåne.getName());
+        CountryButton blekinge = new CountryButton("Blekinge", 153, 600, 35, 15);
+        blekinge.addMouseListener(new clickCountry());
+        layeredPane.add(blekinge, 1, 18);
+        countryQueue.add(blekinge.getName());
+        CountryButton småland = new CountryButton("Småland", 135, 545, 60, 45);
+        småland.addMouseListener(new clickCountry());
+        layeredPane.add(småland, 1, 19);
+        countryQueue.add(småland.getName());
+        CountryButton öland = new CountryButton("Öland", 205, 555, 10, 45);
+        öland.addMouseListener(new clickCountry());
+        layeredPane.add(öland, 1, 20);
+        countryQueue.add(öland.getName());
+        CountryButton gotland = new CountryButton("Gotland", 245, 535, 25, 35);
+        gotland.addMouseListener(new clickCountry());
+        layeredPane.add(gotland, 1, 21);
+        countryQueue.add(gotland.getName());
+        CountryButton östergötland = new CountryButton("Östergötland", 170, 490, 25, 25);
+        östergötland.addMouseListener(new clickCountry());
+        layeredPane.add(östergötland, 1, 22);
+        countryQueue.add(östergötland.getName());
+        CountryButton närke = new CountryButton("Närke", 160, 460, 20, 20);
+        närke.addMouseListener(new clickCountry());
+        layeredPane.add(närke, 1, 23);
+        countryQueue.add(närke.getName());
+        CountryButton södermanland = new CountryButton("Södermanland", 195, 460, 30, 25);
+        södermanland.addMouseListener(new clickCountry());
+        layeredPane.add(södermanland, 1, 24);
+        countryQueue.add(södermanland.getName());
+        shuffleQueue();
+    }
+
     private void switchToEurope(){
         switchMap("Europe");
         clearOldCountries();
@@ -858,11 +969,13 @@ public class MapFrame extends JFrame {
             }else{
                 continent.setVisible(true);
                 if(continent.getName().equals("Africa")){
-                    continent.setBounds(15, 145, buttonWidth, buttonHeight);
+                    continent.setBounds(60, 560, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(15, 190, buttonWidth, buttonHeight);
+                    continent.setBounds(590, 560, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("States")){
-                    continent.setBounds(15, 100, buttonWidth, buttonHeight);
+                    continent.setBounds(15, 170, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Sweden")){
+                    continent.setBounds(300, 100, buttonWidth, buttonHeight);
                 }
             }
         }
@@ -880,11 +993,13 @@ public class MapFrame extends JFrame {
             }else{
                 continent.setVisible(true);
                 if(continent.getName().equals("Europe")){
-                    continent.setBounds(20, 420, buttonWidth, buttonHeight);
+                    continent.setBounds(405, 10, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(20, 470, buttonWidth, buttonHeight);
+                    continent.setBounds(500, 100, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("States")){
                     continent.setBounds(20, 370, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Sweden")){
+                    continent.setBounds(280, 10, buttonWidth, buttonHeight);
                 }
             }
         }
@@ -902,11 +1017,13 @@ public class MapFrame extends JFrame {
             }else{
                 continent.setVisible(true);
                 if(continent.getName().equals("Europe")){
-                    continent.setBounds(170, 535, buttonWidth, buttonHeight);
+                    continent.setBounds(30, 190, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("Africa")){
-                    continent.setBounds(170, 580, buttonWidth, buttonHeight);
+                    continent.setBounds(30, 560, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("States")){
-                    continent.setBounds(170, 625, buttonWidth, buttonHeight);
+                    continent.setBounds(700, 335, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Sweden")){
+                    continent.setBounds(40, 80, buttonWidth, buttonHeight);
                 }
             }
         }
@@ -929,11 +1046,37 @@ public class MapFrame extends JFrame {
                     continent.setBounds(525, 10, buttonWidth, buttonHeight);
                 }else if(continent.getName().equals("Asia")){
                     continent.setBounds(400, 55, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Sweden")){
+                    continent.setBounds(525, 55, buttonWidth, buttonHeight);
                 }
             }
         }
         moveResetAndLabels("States");
         seedStatesButtons();
+    }
+
+    private void switchToSweden(){
+        switchMap("Sweden");
+        clearOldCountries();
+        Component[] continents = layeredPane.getComponentsInLayer(5);
+        for(Component continent : continents){
+            if(continent.getName().equals("Sweden")){
+                continent.setVisible(false);
+            }else{
+                continent.setVisible(true);
+                if(continent.getName().equals("Europe")){
+                    continent.setBounds(160, 620, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Africa")){
+                    continent.setBounds(300, 620, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("States")){
+                    continent.setBounds(10, 80, buttonWidth, buttonHeight);
+                }else if(continent.getName().equals("Asia")){
+                    continent.setBounds(290, 360, buttonWidth, buttonHeight);
+                }
+            }
+        }
+        moveResetAndLabels("Sweden");
+        seedSwedenButtons();
     }
 
     private void moveResetAndLabels(String continentName){
@@ -944,19 +1087,24 @@ public class MapFrame extends JFrame {
                 currentCountryLabel.setBounds(20, 580, 300, 50);
             }
             case "Europe" -> {
-                resetButton.setBounds(15, 235, 80, 40);
+                resetButton.setBounds(630, 10, 80, 40);
                 currentCountryLabel.setBounds(180, 30, 300, 50);
                 guessesLabel.setBounds(180, 1, 300, 50);
             }
             case "Asia" -> {
-                resetButton.setBounds(190, 490, 80, 40);
+                resetButton.setBounds(720, 20, 80, 40);
                 currentCountryLabel.setBounds(160, 150, 300, 50);
                 guessesLabel.setBounds(160, 120, 300, 50);
             }
             case "States" -> {
-                resetButton.setBounds(525, 55, 80, 40);
+                resetButton.setBounds(650, 55, 80, 40);
                 currentCountryLabel.setBounds(140, 30, 300, 50);
                 guessesLabel.setBounds(140, 1, 300, 50);
+            }
+            case "Sweden" -> {
+                resetButton.setBounds(10, 130, 80, 40);
+                currentCountryLabel.setBounds(10, 30, 300, 50);
+                guessesLabel.setBounds(10, 1, 300, 50);
             }
         }
     }
@@ -1008,6 +1156,15 @@ public class MapFrame extends JFrame {
                 height = 715;
                 try {
                     mapImage = ImageIO.read(new File(".\\resources\\america.png"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            case "Sweden" -> {
+                width = 450;
+                height = 720;
+                try {
+                    mapImage = ImageIO.read(new File(".\\resources\\sweden.png"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -1102,6 +1259,7 @@ public class MapFrame extends JFrame {
                 case "Europe" -> switchToEurope();
                 case "Asia" -> switchToAsia();
                 case "States" -> switchToStates();
+                case "Sweden" -> switchToSweden();
             }
         }
 
