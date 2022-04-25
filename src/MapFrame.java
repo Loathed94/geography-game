@@ -35,7 +35,6 @@ public class MapFrame extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUpBackground();
-        //seedEuropeanButtons();
         setUpLabels();
         generateResetButton();
         setupMenuButton();
@@ -46,8 +45,6 @@ public class MapFrame extends JFrame {
     private void setUpBackground(){
         JPanel backgroundPane = new JPanel();
         backgroundPane.setBounds(0, 0, 180, 320);
-        //JLabel pic = new JLabel(new ImageIcon(mapImage));
-        //backgroundPane.add(pic);
         backgroundPane.setOpaque(true);
         layeredPane.add(backgroundPane, 0, 0);
     }
