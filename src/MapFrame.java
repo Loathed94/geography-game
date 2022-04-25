@@ -22,32 +22,32 @@ public class MapFrame extends JFrame {
     private Queue<String> countryQueue = new LinkedList<>();
     private final JLabel currentCountryLabel = new JLabel("Select country: ");
     private final JButton resetButton = new JButton("RESET");
+    private final JButton menuButton = new JButton("Menu");
     private int correctGuesses = 0;
     private int totalGuesses = 0;
     private final JLabel guessesLabel = new JLabel("Correct guesses: "+correctGuesses+" out of "+totalGuesses+" attempts.");
-    private final int buttonWidth = 120;
-    private final int buttonHeight = 40;
 
     public MapFrame(){
-        setSize(750, 650);
+        setSize(180, 320);
         setLayout(new BorderLayout());
         add(layeredPane, BorderLayout.CENTER);
-        layeredPane.setBounds(0, 0, 750, 650);
+        layeredPane.setBounds(0, 0, 180, 320);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUpBackground();
-        seedEuropeanButtons();
+        //seedEuropeanButtons();
         setUpLabels();
         generateResetButton();
+        setupMenuButton();
         generateContinentButtons();
         setVisible(true);
     }
 
     private void setUpBackground(){
         JPanel backgroundPane = new JPanel();
-        backgroundPane.setBounds(0, 0, 750, 650);
-        JLabel pic = new JLabel(new ImageIcon(mapImage));
-        backgroundPane.add(pic);
+        backgroundPane.setBounds(0, 0, 180, 320);
+        //JLabel pic = new JLabel(new ImageIcon(mapImage));
+        //backgroundPane.add(pic);
         backgroundPane.setOpaque(true);
         layeredPane.add(backgroundPane, 0, 0);
     }
@@ -57,45 +57,59 @@ public class MapFrame extends JFrame {
         guessesLabel.setBounds(180, 1, 300, 50);
         layeredPane.add(currentCountryLabel, 2, 0);
         layeredPane.add(guessesLabel, 3, 0);
+        currentCountryLabel.setVisible(false);
+        guessesLabel.setVisible(false);
     }
 
     private void generateResetButton(){
         resetButton.setBounds(630, 10, 80, 40);
         resetButton.addMouseListener(new clickReset());
         layeredPane.add(resetButton, 4, 0);
+        resetButton.setVisible(false);
     }
 
     private void generateContinentButtons(){
+        int buttonWidth = 120;
+        int buttonHeight = 40;
+
         JButton africa = new JButton("Play Africa");
         africa.setName("Africa");
-        africa.setBounds(60, 560, buttonWidth, buttonHeight);
+        africa.setBounds(20, 20, buttonWidth, buttonHeight);
         africa.addMouseListener(new switchContinent());
-        layeredPane.add(africa, 5, 0);
+        layeredPane.add(africa, 5, 1);
 
         JButton europe = new JButton("Play Europe");
         europe.setName("Europe");
-        europe.setBounds(0, 0, buttonWidth, buttonHeight);
+        europe.setBounds(20, 70, buttonWidth, buttonHeight);
         europe.addMouseListener(new switchContinent());
-        europe.setVisible(false);
-        layeredPane.add(europe, 5, 1);
+        //europe.setVisible(false);
+        layeredPane.add(europe, 5, 2);
 
         JButton asia = new JButton("Play Asia");
         asia.setName("Asia");
-        asia.setBounds(590, 560, buttonWidth, buttonHeight);
+        asia.setBounds(20, 120, buttonWidth, buttonHeight);
         asia.addMouseListener(new switchContinent());
-        layeredPane.add(asia, 5, 2);
+        layeredPane.add(asia, 5, 3);
 
         JButton states = new JButton("Play US States");
         states.setName("States");
-        states.setBounds(15, 170, buttonWidth, buttonHeight);
+        states.setBounds(20, 170, buttonWidth, buttonHeight);
         states.addMouseListener(new switchContinent());
-        layeredPane.add(states, 5, 3);
+        layeredPane.add(states, 5, 4);
 
         JButton sweden = new JButton("Play Sweden");
         sweden.setName("Sweden");
-        sweden.setBounds(300, 100, buttonWidth, buttonHeight);
+        sweden.setBounds(20, 220, buttonWidth, buttonHeight);
         sweden.addMouseListener(new switchContinent());
-        layeredPane.add(sweden, 5, 4);
+        layeredPane.add(sweden, 5, 5);
+    }
+
+    private void setupMenuButton(){
+        menuButton.setBounds(10, 10, 80, 40);
+        menuButton.setName("Menu");
+        menuButton.addMouseListener(new switchContinent());
+        layeredPane.add(menuButton, 4, 1);
+        menuButton.setVisible(false);
     }
 
     private void seedEuropeanButtons(){
@@ -962,23 +976,7 @@ public class MapFrame extends JFrame {
     private void switchToEurope(){
         switchMap("Europe");
         clearOldCountries();
-        Component[] continents = layeredPane.getComponentsInLayer(5);
-        for(Component continent : continents){
-            if(continent.getName().equals("Europe")){
-                continent.setVisible(false);
-            }else{
-                continent.setVisible(true);
-                if(continent.getName().equals("Africa")){
-                    continent.setBounds(60, 560, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(590, 560, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("States")){
-                    continent.setBounds(15, 170, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Sweden")){
-                    continent.setBounds(300, 100, buttonWidth, buttonHeight);
-                }
-            }
-        }
+        hideGameOptions();
         moveResetAndLabels("Europe");
         seedEuropeanButtons();
     }
@@ -986,23 +984,7 @@ public class MapFrame extends JFrame {
     private void switchToAfrica(){
         switchMap("Africa");
         clearOldCountries();
-        Component[] continents = layeredPane.getComponentsInLayer(5);
-        for(Component continent : continents){
-            if(continent.getName().equals("Africa")){
-                continent.setVisible(false);
-            }else{
-                continent.setVisible(true);
-                if(continent.getName().equals("Europe")){
-                    continent.setBounds(405, 10, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(500, 100, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("States")){
-                    continent.setBounds(20, 370, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Sweden")){
-                    continent.setBounds(280, 10, buttonWidth, buttonHeight);
-                }
-            }
-        }
+        hideGameOptions();
         moveResetAndLabels("Africa");
         seedAfricanButtons();
     }
@@ -1010,23 +992,7 @@ public class MapFrame extends JFrame {
     private void switchToAsia(){
         switchMap("Asia");
         clearOldCountries();
-        Component[] continents = layeredPane.getComponentsInLayer(5);
-        for(Component continent : continents){
-            if(continent.getName().equals("Asia")){
-                continent.setVisible(false);
-            }else{
-                continent.setVisible(true);
-                if(continent.getName().equals("Europe")){
-                    continent.setBounds(30, 190, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Africa")){
-                    continent.setBounds(30, 560, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("States")){
-                    continent.setBounds(700, 335, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Sweden")){
-                    continent.setBounds(40, 80, buttonWidth, buttonHeight);
-                }
-            }
-        }
+        hideGameOptions();
         moveResetAndLabels("Asia");
         seedAsianButtons();
     }
@@ -1034,23 +1000,7 @@ public class MapFrame extends JFrame {
     private void switchToStates(){
         switchMap("States");
         clearOldCountries();
-        Component[] continents = layeredPane.getComponentsInLayer(5);
-        for(Component continent : continents){
-            if(continent.getName().equals("States")){
-                continent.setVisible(false);
-            }else{
-                continent.setVisible(true);
-                if(continent.getName().equals("Europe")){
-                    continent.setBounds(400, 10, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Africa")){
-                    continent.setBounds(525, 10, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(400, 55, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Sweden")){
-                    continent.setBounds(525, 55, buttonWidth, buttonHeight);
-                }
-            }
-        }
+        hideGameOptions();
         moveResetAndLabels("States");
         seedStatesButtons();
     }
@@ -1058,51 +1008,72 @@ public class MapFrame extends JFrame {
     private void switchToSweden(){
         switchMap("Sweden");
         clearOldCountries();
-        Component[] continents = layeredPane.getComponentsInLayer(5);
-        for(Component continent : continents){
-            if(continent.getName().equals("Sweden")){
-                continent.setVisible(false);
-            }else{
-                continent.setVisible(true);
-                if(continent.getName().equals("Europe")){
-                    continent.setBounds(160, 620, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Africa")){
-                    continent.setBounds(300, 620, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("States")){
-                    continent.setBounds(10, 80, buttonWidth, buttonHeight);
-                }else if(continent.getName().equals("Asia")){
-                    continent.setBounds(290, 360, buttonWidth, buttonHeight);
-                }
-            }
-        }
+        hideGameOptions();
         moveResetAndLabels("Sweden");
         seedSwedenButtons();
     }
 
+    private void switchToMenu(){
+        switchMap("Menu");
+        clearOldCountries();
+        unhideGameOptions();
+        hideResetMenuAndLabels();
+    }
+
+    private void hideGameOptions(){
+        Component[] continents = layeredPane.getComponentsInLayer(5);
+        for(Component continent : continents){
+            continent.setVisible(false);
+        }
+    }
+
+    private void unhideGameOptions(){
+        Component[] continents = layeredPane.getComponentsInLayer(5);
+        for(Component continent : continents){
+            continent.setVisible(true);
+        }
+    }
+
+    private void hideResetMenuAndLabels(){
+        resetButton.setVisible(false);
+        menuButton.setVisible(false);
+        currentCountryLabel.setVisible(false);
+        guessesLabel.setVisible(false);
+    }
+
     private void moveResetAndLabels(String continentName){
+        resetButton.setVisible(true);
+        currentCountryLabel.setVisible(true);
+        guessesLabel.setVisible(true);
+        menuButton.setVisible(true);
         switch (continentName) {
             case "Africa" -> {
-                resetButton.setBounds(20, 520, 80, 40);
+                menuButton.setBounds(20, 520, 80, 40);
+                resetButton.setBounds(20, 470, 80, 40);
                 guessesLabel.setBounds(20, 550, 300, 50);
                 currentCountryLabel.setBounds(20, 580, 300, 50);
             }
             case "Europe" -> {
-                resetButton.setBounds(630, 10, 80, 40);
-                currentCountryLabel.setBounds(180, 30, 300, 50);
-                guessesLabel.setBounds(180, 1, 300, 50);
+                resetButton.setBounds(15, 140, 80, 40);
+                menuButton.setBounds(15, 190, 80, 40);
+                currentCountryLabel.setBounds(15, 75, 300, 50);
+                guessesLabel.setBounds(15, 100, 300, 50);
             }
             case "Asia" -> {
-                resetButton.setBounds(720, 20, 80, 40);
+                resetButton.setBounds(740, 100, 80, 40);
+                menuButton.setBounds(740, 150, 80, 40);
                 currentCountryLabel.setBounds(160, 150, 300, 50);
                 guessesLabel.setBounds(160, 120, 300, 50);
             }
             case "States" -> {
-                resetButton.setBounds(650, 55, 80, 40);
-                currentCountryLabel.setBounds(140, 30, 300, 50);
+                resetButton.setBounds(550, 15, 80, 40);
+                menuButton.setBounds(550, 60, 80, 40);
+                currentCountryLabel.setBounds(140, 25, 300, 50);
                 guessesLabel.setBounds(140, 1, 300, 50);
             }
             case "Sweden" -> {
-                resetButton.setBounds(10, 130, 80, 40);
+                resetButton.setBounds(10, 70, 80, 40);
+                menuButton.setBounds(10, 115, 80, 40);
                 currentCountryLabel.setBounds(10, 30, 300, 50);
                 guessesLabel.setBounds(10, 1, 300, 50);
             }
@@ -1168,6 +1139,14 @@ public class MapFrame extends JFrame {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+            case "Menu" -> {
+                width = 180;
+                height = 320;
+                setSize(width, height);
+                layeredPane.setBounds(0, 0, width, height);
+                backgroundPanel.setBounds(0, 0, width, height);
+                return;
             }
         }
         setSize(width, height);
@@ -1260,6 +1239,7 @@ public class MapFrame extends JFrame {
                 case "Asia" -> switchToAsia();
                 case "States" -> switchToStates();
                 case "Sweden" -> switchToSweden();
+                case "Menu" -> switchToMenu();
             }
         }
 
